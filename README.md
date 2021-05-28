@@ -1,0 +1,1 @@
+Couple of things I did while studying at Opole University of Technology.
