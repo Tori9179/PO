@@ -1,0 +1,82 @@
+﻿@page
+@model CiekaweMiejsca.Pages.posty.wszystkie.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>@Model.miejsce</h1>
+@if (Logowanie.uzytkownik != null)
+{
+    @if (Logowanie.uzytkownik.rola == "admin")
+    {
+        <p>
+            <a asp-page="Create">Utwórz nowy post</a>
+        </p>
+    }
+}
+<h6>Wybierz tytuł</h6>
+<br />
+        <table class="table">
+            @*<thead>
+                <tr>
+                    <th>Wybierz tytuł</th>
+                </tr>
+            </thead>*@
+            @if (Logowanie.uzytkownik != null && Logowanie.uzytkownik.rola == "admin")
+            {
+                <tbody>
+                    @foreach (var item in Model.getLista())
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.tytul)
+                            </td>
+                            <td>
+                                <a asp-page="./Edit" asp-route-id="@item.id_postu">Edit</a> |
+                                <a asp-page="./Details" asp-route-id="@item.id_postu">Details</a> |
+                                <a asp-page="./Delete" asp-route-id="@item.id_postu">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+             }
+            @*else
+            {
+                <tbody>
+                    @foreach (var item in Model.getLista())
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.tytul)
+                            </td>
+                            <td>
+                                <a asp-page="./Details" asp-route-id="@item.id_postu">Details</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            }*@  
+            else
+            {
+                <tbody>
+                    @foreach (var item in Model.getLista())
+                    {
+                        <tr>
+                            <td>
+                                <a id="szczegoly" class="szczegoly" asp-page="./Details" asp-route-id="@item.id_postu">@Html.DisplayFor(modelItem => item.tytul)</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            }
+        </table>
+<style>
+    #szczegoly {
+        display: block;
+        color: black;
+        width: 100%;
+        height: 100%;
+    }
+</style>
+

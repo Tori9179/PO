@@ -1,0 +1,45 @@
+﻿@page
+@model CiekaweMiejsca.Pages.komentarze.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Komentarze</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Treść
+            </th>
+            <th>
+                Autor
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.komentarz[0].Post)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.komentarz) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.tresc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.autor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Post.id_postu)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.id_komentarza">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.id_komentarza">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.id_komentarza">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,175 @@
+﻿<Window x:Class="Biblioteka.Dodaj"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Biblioteka"
+        mc:Ignorable="d"
+        Title="Libriv" Height="450" Width="800" Closing="CloseD_Button">
+    <Grid>
+        <Button Content="Dodaj pozycję" 
+                HorizontalAlignment="Left" 
+                Height="35" 
+                Margin="500,22,0,0" 
+                VerticalAlignment="Top" 
+                Width="161" 
+                Background="#FF51D4C8"/>
+        <Button Content="Spis książek" 
+                HorizontalAlignment="Left" 
+                Height="35" Margin="138,22,0,0" 
+                VerticalAlignment="Top" 
+                Width="161" 
+                Click="SpisKlik"/>
+        <Button Content="Moja lista życzeń" 
+                HorizontalAlignment="Left" 
+                Height="35" 
+                Margin="319,22,0,0" 
+                VerticalAlignment="Top" 
+                Width="161" 
+                Click="ListaKlik"/>
+        <Image x:Name="CoverImage" 
+               Source="defaultcover.jpg"
+               HorizontalAlignment="Left" 
+               Height="181" 
+               Margin="86,102,0,0" 
+               VerticalAlignment="Top" 
+               Width="127"/>
+        <TextBox x:Name="TextBoxTytul" 
+                 HorizontalAlignment="Left" 
+                 Height="22" Margin="259,89,0,0" 
+                 TextWrapping="Wrap" 
+                 Text="Tytuł" 
+                 VerticalAlignment="Top" 
+                 Width="235"
+                 GotFocus="TextBox_GotFocus"/>
+        <TextBox x:Name="TextBoxAutor"
+                 HorizontalAlignment="Left" 
+                 Height="22" 
+                 Margin="259,119,0,0" 
+                 TextWrapping="Wrap" 
+                 Text="Autor" 
+                 VerticalAlignment="Top"
+                 Width="235"
+                 GotFocus="TextBox_GotFocus"/>
+        <CheckBox x:Name="CheckBoxTak" 
+                  Content="Tak" 
+                  HorizontalAlignment="Left" 
+                  Height="32" 
+                  Margin="259,220,0,0" 
+                  VerticalAlignment="Top" 
+                  Width="193"
+                  Click="cbTakKlik"/>
+        <CheckBox x:Name="CheckBoxNie" 
+                  Content="Nie" 
+                  HorizontalAlignment="Left" 
+                  Height="31" 
+                  Margin="259,252,0,0" 
+                  VerticalAlignment="Top" 
+                  Width="193" 
+                  Click="CheckBoxNie_Click"/>
+        <Label Content="Czy przeczytano?" 
+               HorizontalAlignment="Left" 
+               Height="29" 
+               Margin="259,186,0,0" 
+               VerticalAlignment="Top" 
+               Width="187"/>
+        <Label Content="Ustaw ocenę" 
+               HorizontalAlignment="Left" 
+               Height="29" 
+               Margin="259,283,0,0" 
+               VerticalAlignment="Top" 
+               Width="187"/>
+        <TextBox HorizontalAlignment="Left"
+                 Text= "{Binding Value, ElementName = SliderOcena}"
+                 Height="18" Margin="430,314,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="16"/>
+        <Slider x:Name="SliderOcena" HorizontalAlignment="Left"
+                Maximum="6"  
+                TickPlacement="BottomRight" 
+                TickFrequency="1" 
+                IsSnapToTickEnabled="True" 
+                Height="23" 
+                Margin="259,317,0,0" 
+                VerticalAlignment="Top" 
+                Width="166"/>
+        <Button x:Name="ButtonGotowe" Content="Gotowe" 
+                HorizontalAlignment="Left" 
+                Height="35" 
+                Margin="438,360,0,0" 
+                VerticalAlignment="Top" 
+                Width="161" 
+                Background="#FF39E628"
+                IsEnabled="True"
+                Click="GotoweDodawanieKlik" />
+        <Button Content="Dodaj grafikę" 
+                HorizontalAlignment="Left" 
+                Height="35" 
+                Margin="87,305,0,0" 
+                VerticalAlignment="Top" 
+                Width="120" 
+                Click="DodajGrafikeKlik" />
+        <CheckBox x:Name="CheckBoxSpis" 
+                  Content="spis książek" 
+                  HorizontalAlignment="Left" 
+                  Height="32" 
+                  Margin="521,220,0,0" 
+                  VerticalAlignment="Top" 
+                  Width="193" 
+                  Click="cbSpisKlik"/>
+        <CheckBox x:Name="CheckBoxLista" 
+                  Content="moja lista życzeń" 
+                  HorizontalAlignment="Left" 
+                  Height="31" 
+                  Margin="521,252,0,0" 
+                  VerticalAlignment="Top" 
+                  Width="193" 
+                  Click="cbListaKlik"/>
+        <Label Content="Wybierz rodzaj dodawanej pozycji" 
+               HorizontalAlignment="Left" 
+               Height="29" 
+               Margin="521,186,0,0" 
+               VerticalAlignment="Top" 
+               Width="193"/>
+        <ComboBox x:Name="ComboBoxGatunki" 
+                  HorizontalAlignment="Left" 
+                  Height="22" 
+                  Margin="259,148,0,0" 
+                  VerticalAlignment="Top" 
+                  Width="235"
+                  IsEditable="True"
+                  IsReadOnly="True"
+                  Text="Gatunki">
+            <ComboBoxItem>Dramat</ComboBoxItem>
+            <ComboBoxItem>Fantasy</ComboBoxItem>
+            <ComboBoxItem>Horror</ComboBoxItem>
+            <ComboBoxItem>Komedia</ComboBoxItem>
+            <ComboBoxItem>Komiksy</ComboBoxItem>
+            <ComboBoxItem>Kryminał</ComboBoxItem>
+            <ComboBoxItem>Literatura dziecięca</ComboBoxItem>
+            <ComboBoxItem>Literatura faktu</ComboBoxItem>
+            <ComboBoxItem>Literatura młodzieżowa</ComboBoxItem>
+            <ComboBoxItem>Literatura piękna</ComboBoxItem>
+            <ComboBoxItem>Literatura popularnonaukowa</ComboBoxItem>
+            <ComboBoxItem>Poezja</ComboBoxItem>
+            <ComboBoxItem>Powieść historyczna</ComboBoxItem>
+            <ComboBoxItem>Powieść przygodowa</ComboBoxItem>
+            <ComboBoxItem>Romance</ComboBoxItem>
+            <ComboBoxItem>Science-fiction</ComboBoxItem>
+            <ComboBoxItem>Utwór dramatyczny</ComboBoxItem>
+            <ComboBoxItem>Pozostałe</ComboBoxItem>
+        </ComboBox>
+        <RichTextBox x:Name="rtbOpis" 
+                     HorizontalAlignment="Left" 
+                     Height="81" 
+                     Margin="521,89,0,0" 
+                     VerticalAlignment="Top" 
+                     Width="182"
+                     GotFocus="RichTextBox_GotFocus">
+            <FlowDocument>
+                <Paragraph>
+                    <Run Text="Krótki opis"/>
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
+
+    </Grid>
+</Window>

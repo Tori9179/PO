@@ -1,0 +1,53 @@
+﻿@page
+@model CiekaweMiejsca.Pages.posty.wszystkie.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Post</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label>Treść postu</label>
+                <input asp-for="Post.tresc" class="form-control" />
+                <span asp-validation-for="Post.tresc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Lokalizacja</label>
+                <select asp-for="Post.lokalizacja" class="form-control">
+                    <option value="">Wybierz lokalizację</option>
+                    <option value="Afryka">Afryka</option>
+                    <option value="Ameryka Północna">Ameryka Północna</option>
+                    <option value="Ameryka Południowa">Ameryka Południowa</option>
+                    <option value="Australia">Australia</option>
+                    <option value="Azja">Azja</option>
+                    <option value="Europa">Europa</option>
+                </select>
+                <span asp-validation-for="Post.lokalizacja" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Tytuł</label>
+                <input  asp-for="Post.tytul" class="form-control" />
+                <span asp-validation-for="Post.tytul" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Wybierz obraz</label>
+                <input type="file" asp-for="Post.obrazek" class="form-control" accept="image/*" />
+                <span asp-validation-for="Post.obrazek" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Utwórz" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,88 @@
+﻿<Window x:Class="Biblioteka.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Biblioteka"
+        mc:Ignorable="d"
+        Title="Libriv" Height="450" Width="800" Closing="Close_Button">
+    <Grid>
+        <Button Content="Dodaj pozycję" HorizontalAlignment="Left" Height="35" Margin="500,23,0,0" VerticalAlignment="Top" Width="161" Click="DodajPozycjeKlik"/>
+        <Button Content="Spis książek" HorizontalAlignment="Left" Height="35" Margin="138,23,0,0" VerticalAlignment="Top" Width="161" Background="#FF51D4C8"/>
+        <Button Content="Moja lista życzeń" HorizontalAlignment="Left" Height="35" Margin="319,23,0,0" VerticalAlignment="Top" Width="161" Click="MojaLista"/>
+        <ListView x:Name="ListViewSpis" 
+                  HorizontalAlignment="Left" 
+                  Height="295" 
+                  Margin="191,86,0,0" 
+                  VerticalAlignment="Top" 
+                  Width="568"
+                  MouseDoubleClick="ListViewSpis_DoubleClick">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="215" DisplayMemberBinding="{Binding Tytul}">
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Tag="Tytul" Click="Sort_Click">Tytuł</GridViewColumnHeader>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
+                    <GridViewColumn Width="160" DisplayMemberBinding="{Binding Autor}">
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Tag="Autor" Click="Sort_Click">Autor</GridViewColumnHeader>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
+                    <GridViewColumn Width="120" DisplayMemberBinding="{Binding Gatunek}">
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Tag="Gatunek" Click="Sort_Click">Gatunek</GridViewColumnHeader>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
+                    <GridViewColumn Width="70" DisplayMemberBinding="{Binding Ocena}">
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Tag="Ocena" Click="Sort_Click">Ocena</GridViewColumnHeader>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <!--<Button Content="Button" HorizontalAlignment="Left" Margin="37,38,0,0" VerticalAlignment="Top" Width="75" Click="PokazKsiazkeMi"/>-->
+        <Slider x:Name="SliderOcena" HorizontalAlignment="Left"
+                Maximum="6"  
+                TickPlacement="BottomRight" 
+                TickFrequency="1" 
+                IsSnapToTickEnabled="True" 
+                Height="24" 
+                Margin="20,324,0,0" 
+                VerticalAlignment="Top" 
+                Width="150"
+                ValueChanged="SliderValueChanged"/>
+        <TextBox x:Name="Ocena_TextBox"
+                 HorizontalAlignment="Left"
+                 Text="{ Binding Value, ElementName = SliderOcena}"
+                 Height="18" Margin="105,301,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="16" RenderTransformOrigin="-9.156,-3.694"/>
+        <Label Content="Gatunek" 
+            HorizontalAlignment="Left" 
+            Height="28" 
+            Margin="20,216,0,0" 
+            VerticalAlignment="Top" 
+            Width="193"/>
+        <Label Content="Wybierz ocenę" 
+            HorizontalAlignment="Left" 
+            Height="28" 
+            Margin="13,296,0,0" 
+            VerticalAlignment="Top" 
+            Width="193"/>
+        <Label Content="Tytuł" 
+            HorizontalAlignment="Left" 
+            Height="28" 
+            Margin="20,86,0,0" 
+            VerticalAlignment="Top" 
+            Width="193"/>
+        <Label Content="Autor" 
+            HorizontalAlignment="Left" 
+            Height="28" 
+            Margin="20,150,0,0" 
+            VerticalAlignment="Top" 
+            Width="193"/>
+        <TextBox x:Name="TextBoxTytul_Wyszukaj" HorizontalAlignment="Left" Margin="20,114,0,280.5" Width="150" TextChanged="Filter_TextChanged" />
+        <TextBox x:Name="TextBoxAutor_Wyszukaj" HorizontalAlignment="Left" Margin="20,178,0,216.5" Width="150"  TextChanged="Filter_TextChanged"/>
+        <TextBox x:Name="TextBoxGatunek_Wyszukaj" HorizontalAlignment="Left" Margin="20,244,0,150.5" Width="150"  TextChanged="Filter_TextChanged"/>
+    </Grid>
+</Window>

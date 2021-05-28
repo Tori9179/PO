@@ -1,0 +1,72 @@
+﻿@page
+@model CiekaweMiejsca.Pages.posty.wszystkie.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+<div class="text-center">
+    <h1>@Model.Post.tytul</h1>
+    <h3>@Model.Post.lokalizacja</h3>
+</div>
+<div>
+    <hr />
+    <div>
+        <dl class="row">
+            <dd class="col-sm-12 text-center">
+                <img class="fotka" id="fotka" src="~/img/@Model.Post.obrazek" alt="foto"/>
+            </dd>
+            <dd class="col-sm-12 text-justify">
+                @Html.DisplayFor(model => model.Post.tresc)
+            </dd>
+        </dl>
+    </div>
+</div>
+<br>
+
+@if (Logowanie.uzytkownik == null)
+{
+    <h2>Komentarze</h2>
+    <a asp-area="" asp-page="/Logowanie">Zaloguj się, aby dodać komentarz</a>
+    <hr>
+    <br>
+}
+@if (Logowanie.uzytkownik != null)
+{
+    <h2>Komentarze</h2>
+    <hr>
+    <h4>Dodaj komentarz</h4>
+
+    <div class="row">
+        <div class="col-md-4">
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label>Treść</label>
+                    <input asp-for="komentarz.tresc" class="form-control" />
+                    <span asp-validation-for="komentarz.tresc" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <hr>
+    <br>
+}
+@foreach (var item in Model.komentarze)
+{
+    <h5>@Html.DisplayFor(modelItem => item.autor)</h5>
+    <div class="text-justify">
+        <p>@Html.DisplayFor(modelItem => item.tresc)</p>
+    </div>
+    <hr />
+    <br>
+}
+
+
+<style>
+    #fotka {
+        height: 70vh;
+    }
+</style>

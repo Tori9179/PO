@@ -1,0 +1,37 @@
+﻿@page
+@model CiekaweMiejsca.Pages.komentarze.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>komentarz</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.komentarz.tresc)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.komentarz.tresc)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.komentarz.autor)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.komentarz.autor)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.komentarz.Post)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.komentarz.Post.id_postu)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.komentarz.id_komentarza">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

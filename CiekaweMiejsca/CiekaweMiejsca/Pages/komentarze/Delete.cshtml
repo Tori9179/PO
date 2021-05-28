@@ -1,0 +1,40 @@
+﻿@page
+@model CiekaweMiejsca.Pages.komentarze.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>komentarz</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.komentarz.tresc)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.komentarz.tresc)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.komentarz.autor)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.komentarz.autor)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.komentarz.Post)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.komentarz.Post.id_postu)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="komentarz.id_komentarza" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-page="./Index">Back to List</a>
+    </form>
+</div>

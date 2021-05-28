@@ -1,0 +1,69 @@
+﻿<Window x:Class="Biblioteka.Edycja"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Biblioteka"
+        mc:Ignorable="d"
+        Title="Libriv" Height="450" Width="800" Closing="CloseE_Button">
+    <Grid>
+        <Image x:Name="ImageEdytuj" HorizontalAlignment="Left" Height="181" Margin="83,72,0,0" VerticalAlignment="Top" Width="127"/>
+        <TextBox x:Name="tytulEdycja_TextBox" HorizontalAlignment="Left" Height="22" Margin="256,59,0,0" TextWrapping="Wrap" Text="Tytuł" VerticalAlignment="Top" Width="235" GotFocus="TextBox_GotFocus"/>
+        <TextBox x:Name="autorEdycja_TextBox" HorizontalAlignment="Left" Height="22" Margin="256,89,0,0" TextWrapping="Wrap" Text="Autor" VerticalAlignment="Top" Width="235" GotFocus="TextBox_GotFocus"/>
+        <CheckBox x:Name="takEdytuj_CheckBox" Content="Tak" HorizontalAlignment="Left" Height="32" Margin="256,190,0,0" VerticalAlignment="Top" Width="193" Click="takE_Click"/>
+        <CheckBox x:Name="nieEdytuj_CheckBox" Content="Nie" HorizontalAlignment="Left" Height="31" Margin="256,222,0,0" VerticalAlignment="Top" Width="193" Click="nieE_Click"/>
+        <Label Content="Czy przeczytano?" HorizontalAlignment="Left" Height="29" Margin="256,156,0,0" VerticalAlignment="Top" Width="187"/>
+        <Label Content="Edytuj ocenę" HorizontalAlignment="Left" Height="29" Margin="256,253,0,0" VerticalAlignment="Top" Width="187"/>
+        <Slider x:Name="suwakEdytuj" HorizontalAlignment="Left" Maximum="6"  TickPlacement="BottomRight" TickFrequency="1" IsSnapToTickEnabled="True"  Height="23" Margin="256,287,0,0" VerticalAlignment="Top" Width="166"/>
+        <Button x:Name="zapiszEdytuj_Button" Content="Zapisz" HorizontalAlignment="Left" Height="35" Margin="501,357,0,0" VerticalAlignment="Top" Width="161" Background="#FF39E628" Click="ZapiszEdycjaKlik" />
+        <Button x:Name="dodajGrafikeEdytuj_Button" Content="Dodaj grafikę" HorizontalAlignment="Left" Height="35" Margin="84,275,0,0" VerticalAlignment="Top" Width="126" Click="DodajGrafikeEdytuj" />
+        <CheckBox x:Name="spisEdytuj_CheckBox" Content="spis książek" HorizontalAlignment="Left" Height="32" Margin="518,190,0,0" VerticalAlignment="Top" Width="193" Click="spisE_Click"/>
+        <CheckBox x:Name="listaEdytuj_CheckBox" Content="moja lista życzeń" HorizontalAlignment="Left" Height="31" Margin="518,222,0,0" VerticalAlignment="Top" Width="193" Click="listaE_Click"/>
+        <Label Content="Wybierz rodzaj dodawanej pozycji" HorizontalAlignment="Left" Height="29" Margin="518,156,0,0" VerticalAlignment="Top" Width="193"/>
+        <ComboBox x:Name="GatunkiEdycja_ComboBox" 
+                  HorizontalAlignment="Left" 
+                  Height="22" 
+                  Margin="256,118,0,0" 
+                  VerticalAlignment="Top" 
+                  Width="235"
+                  IsEditable="True"
+                  IsReadOnly="True"
+                  Text="Gatunki">
+            <ComboBoxItem>Dramat</ComboBoxItem>
+            <ComboBoxItem>Fantasy</ComboBoxItem>
+            <ComboBoxItem>Horror</ComboBoxItem>
+            <ComboBoxItem>Komedia</ComboBoxItem>
+            <ComboBoxItem>Komiksy</ComboBoxItem>
+            <ComboBoxItem>Kryminał</ComboBoxItem>
+            <ComboBoxItem>Literatura dziecięca</ComboBoxItem>
+            <ComboBoxItem>Literatura faktu</ComboBoxItem>
+            <ComboBoxItem>Literatura młodzieżowa</ComboBoxItem>
+            <ComboBoxItem>Literatura piękna</ComboBoxItem>
+            <ComboBoxItem>Literatura popularnonaukowa</ComboBoxItem>
+            <ComboBoxItem>Poezja</ComboBoxItem>
+            <ComboBoxItem>Powieść historyczna</ComboBoxItem>
+            <ComboBoxItem>Powieść przygodowa</ComboBoxItem>
+            <ComboBoxItem>Romance</ComboBoxItem>
+            <ComboBoxItem>Science-fiction</ComboBoxItem>
+            <ComboBoxItem>Utwór dramatyczny</ComboBoxItem>
+            <ComboBoxItem>Pozostałe</ComboBoxItem>
+        </ComboBox>
+        <TextBox x:Name="ocenaEdytuj_TextBox" HorizontalAlignment="Left"
+                 Height="18" 
+                 Margin="427,287,0,0" 
+                 TextWrapping="Wrap" 
+                 VerticalAlignment="Top" 
+                 Width="16" 
+                 RenderTransformOrigin="0.7,-1.022"
+                 Text = "{Binding Value, ElementName = suwakEdytuj}"/>
+        <RichTextBox x:Name="opisEdytuj_RichTextBox" HorizontalAlignment="Left" Height="81" Margin="518,59,0,0" VerticalAlignment="Top" Width="182" GotFocus="RichTextBox_GotFocus">
+            <FlowDocument>
+                <Paragraph>
+                    <Run Text="Krótki opis"/>
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
+        <Button x:Name="anulujEdytuj_Button" Content="Anuluj" HorizontalAlignment="Left" Height="35" Margin="321,357,0,0" VerticalAlignment="Top" Width="161" Click="AnulujEdycjaKlik"  />
+        <Button x:Name="usunEdytuj_Button" Content="Usuń" HorizontalAlignment="Left" Height="35" Margin="67,357,0,0" VerticalAlignment="Top" Width="161" Click="usunEdycjaKlik" Background="#F78181" />
+    </Grid>
+</Window>

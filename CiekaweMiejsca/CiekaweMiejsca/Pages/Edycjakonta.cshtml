@@ -1,0 +1,34 @@
+﻿@page
+@model CiekaweMiejsca.Pages.EdycjakontaModel
+@{
+}
+<h1>Edycja konta</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label>Login</label>
+                <input asp-for="uzytkownik.login" class="form-control" />
+                <span asp-validation-for="uzytkownik.login" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>E-mail</label>
+                <input asp-for="uzytkownik.email" class="form-control" />
+                <span asp-validation-for="uzytkownik.email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Haslo</label>
+                <input asp-for="uzytkownik.haslo" class="form-control" />
+                <span asp-validation-for="uzytkownik.haslo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <a asp-page="/Index" class="btn btn-primary">Powrót</a>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
